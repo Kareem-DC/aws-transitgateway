@@ -20,6 +20,14 @@
 
     - This matters because DNS hostnames are off by default on non-default VPCs. Without them, the instance won’t get a usable DNS hostname, which some connectivity tooling (including Session Manager) expects.
 
+[](Images/1-1.png)
+
+[](Images/1-2.png)
+
+[](Images/1-3.png)
+
+[](Images/1-4.png)
+
 ## Task 2: Create a Public Subnet in First VPC
 
 1. Subnets > Create subnet
@@ -35,6 +43,12 @@
 
 4. Check Enable auto-assign public IPv4 address > Save
 
+[](Images/2-1.png)
+
+[](Images/2-2.png)
+
+[](Images/2-3.png)
+
 ## Task 3: Create and Attach Internet Gateway (IGW)
 
 1. Internet gateways > Create internet gateway
@@ -46,6 +60,12 @@
 3. Select igw_1 > Actions > Attach to VPC
 
 4. Choose first_vpc > Attach internet gateway
+
+[](Images/3-1.png)
+
+[](Images/3-2.png)
+
+[](Images/3-3.png)
 
 ## Task 4: Create a Public Route Table and Associate the Subnet
 
@@ -59,6 +79,14 @@
 3. Open the Subnet associations tab > Edit subnet associations
 
 4. Select public_subnet_first_vpc > Save associations
+
+[](Images/4-1.png)
+
+[](Images/4-2.png)
+
+[](Images/4-3.png)
+
+[](Images/4-4.png)
 
 ## Task 5: Add the Public Route
 
@@ -85,6 +113,12 @@
     - Type: HTTP; Source: Anywhere IPv4 (0.0.0.0/0)
 
 4. Create security group
+
+[](Images/6-1.png)
+
+[](Images/6-2.png)
+
+[](Images/6-3.png)
 
 ## Task 7: Launch EC2 in First VPC (Public)
 
@@ -121,6 +155,18 @@
 
 7. Launch the instance and wait until its status is Running
 
+[](Images/7-1.png)
+
+[](Images/7-2.png)
+
+[](Images/7-3.png)
+
+[](Images/7-4.png)
+
+[](Images/7-5.png)
+
+[](Images/7-6.png)
+
 ## Task 8: Create the Second VPC
 
 1. Your VPCs > Create VPC
@@ -135,6 +181,14 @@
 
 4. Check Enable DNS resolution and Enable DNS hostnames > Save
 
+[](Images/8-1.png)
+
+[](Images/8-2.png)
+
+[](Images/8-3.png)
+
+[](Images/8-4.png)
+
 ## Task 9: Create a Private Subnet in Second VPC
 
 1. Subnets > Create subnet
@@ -147,6 +201,10 @@
 2. Create subnet
 
     - No custom route table or internet gateway is required. The subnet uses the second VPC's main route table and has no internet route.
+
+[](Images/9-1.png)
+
+[](Images/9-2.png)
 
 ## Task 10: Create Security Group
 
@@ -163,6 +221,8 @@
     - Type: SSH; Source: 10.0.0.0/24 (First VPC CIDR)
 
 4. Create security group
+
+[](Images/10-1.png)
 
 ## Task 11: Launch EC2 in Second VPC (Private)
 
@@ -185,6 +245,14 @@
 
 6. Leave the remaining settings at their defaults > Launch instance
 
+[](Images/11-1.png)
+
+[](Images/11-2.png)
+
+[](Images/11-3.png)
+
+[](Images/11-4.png)
+
 ## Task 12: Create Transit Gateway
 
 1. VPC > Transit Gateways > Create transit gateway
@@ -195,6 +263,10 @@
 2. Leave all other options at their defaults
 
 3. Create transit gateway
+
+[](Images/12-1.png)
+
+[](Images/12-2.png)
 
 ## Task 13: Create the Transit Gateway Attachments
 
@@ -220,6 +292,12 @@
 
 4. Create transit gateway attachment
 
+[](Images/13-1.png)
+
+[](Images/13-2.png)
+
+[](Images/13-3.png)
+
 ## Task 14: Route in First VPC Route Table
 
 1. Route tables > Filter by VPC: first_vpc > Select PublicRT
@@ -231,6 +309,12 @@
 
 3. Save changes and confirm the 20.0.0.0/24 route is Active
 
+[](Images/14-1.png)
+
+[](Images/14-2.png)
+
+[](Images/14-3.png)
+
 ## Task 15: Route in Second VPC Route Table
 
 1. Route tables > Filter by VPC: second_vpc > Select that VPC's main route table
@@ -241,6 +325,12 @@
     - Target: Transit Gateway > TGW1
 
 3. Save changes and confirm the route is Active
+
+[](Images/15-1.png)
+
+[](Images/15-2.png)
+
+[](Images/15-3.png)
 
 ## Task 16: Test Connectivity Between VPCs
 
@@ -280,6 +370,22 @@
     ```text
     [ec2-user@ip-20-0-0-xx ~]$
     ```
+
+[](Images/16-1.png)
+
+[](Images/16-2.png)
+
+[](Images/16-3.png)
+
+[](Images/16-4.png)
+
+[](Images/16-5.png)
+
+[](Images/16-6.png)
+
+[](Images/16-7.png)
+
+[](Images/16-8.png)
 
 ## Task 17: Tear Down
 
