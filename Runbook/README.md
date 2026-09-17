@@ -20,13 +20,13 @@
 
     - This matters because DNS hostnames are off by default on non-default VPCs. Without them, the instance won’t get a usable DNS hostname, which some connectivity tooling (including Session Manager) expects.
 
-[](Images/1-1.png)
+[Photo](Images/1-1.png)
 
-[](Images/1-2.png)
+![Photo](Images/1-2.png)
 
-[](Images/1-3.png)
+![Photo](Images/1-3.png)
 
-[](Images/1-4.png)
+![Photo](Images/1-4.png)
 
 ## Task 2: Create a Public Subnet in First VPC
 
@@ -43,11 +43,11 @@
 
 4. Check Enable auto-assign public IPv4 address > Save
 
-[](Images/2-1.png)
+![Photo](Images/2-1.png)
 
-[](Images/2-2.png)
+![Photo](Images/2-2.png)
 
-[](Images/2-3.png)
+![Photo](Images/2-3.png)
 
 ## Task 3: Create and Attach Internet Gateway (IGW)
 
@@ -61,11 +61,11 @@
 
 4. Choose first_vpc > Attach internet gateway
 
-[](Images/3-1.png)
+![Photo](Images/3-1.png)
 
-[](Images/3-2.png)
+![Photo](Images/3-2.png)
 
-[](Images/3-3.png)
+![Photo](Images/3-3.png)
 
 ## Task 4: Create a Public Route Table and Associate the Subnet
 
@@ -80,13 +80,13 @@
 
 4. Select public_subnet_first_vpc > Save associations
 
-[](Images/4-1.png)
+![Photo](Images/4-1.png)
 
-[](Images/4-2.png)
+![Photo](Images/4-2.png)
 
-[](Images/4-3.png)
+![Photo](Images/4-3.png)
 
-[](Images/4-4.png)
+![Photo](Images/4-4.png)
 
 ## Task 5: Add the Public Route
 
@@ -114,11 +114,11 @@
 
 4. Create security group
 
-[](Images/6-1.png)
+![Photo](Images/6-1.png)
 
-[](Images/6-2.png)
+![Photo](Images/6-2.png)
 
-[](Images/6-3.png)
+![Photo](Images/6-3.png)
 
 ## Task 7: Launch EC2 in First VPC (Public)
 
@@ -155,17 +155,17 @@
 
 7. Launch the instance and wait until its status is Running
 
-[](Images/7-1.png)
+![Photo](Images/7-1.png)
 
-[](Images/7-2.png)
+![Photo](Images/7-2.png)
 
-[](Images/7-3.png)
+![Photo](Images/7-3.png)
 
-[](Images/7-4.png)
+![Photo](Images/7-4.png)
 
-[](Images/7-5.png)
+![Photo](Images/7-5.png)
 
-[](Images/7-6.png)
+![Photo](Images/7-6.png)
 
 ## Task 8: Create the Second VPC
 
@@ -181,13 +181,13 @@
 
 4. Check Enable DNS resolution and Enable DNS hostnames > Save
 
-[](Images/8-1.png)
+![Photo](Images/8-1.png)
 
-[](Images/8-2.png)
+![Photo](Images/8-2.png)
 
-[](Images/8-3.png)
+![Photo](Images/8-3.png)
 
-[](Images/8-4.png)
+![Photo](Images/8-4.png)
 
 ## Task 9: Create a Private Subnet in Second VPC
 
@@ -202,9 +202,9 @@
 
     - No custom route table or internet gateway is required. The subnet uses the second VPC's main route table and has no internet route.
 
-[](Images/9-1.png)
+![Photo](Images/9-1.png)
 
-[](Images/9-2.png)
+![Photo](Images/9-2.png)
 
 ## Task 10: Create Security Group
 
@@ -222,7 +222,7 @@
 
 4. Create security group
 
-[](Images/10-1.png)
+![Photo](Images/10-1.png)
 
 ## Task 11: Launch EC2 in Second VPC (Private)
 
@@ -245,13 +245,13 @@
 
 6. Leave the remaining settings at their defaults > Launch instance
 
-[](Images/11-1.png)
+![Photo](Images/11-1.png)
 
-[](Images/11-2.png)
+![Photo](Images/11-2.png)
 
-[](Images/11-3.png)
+![Photo](Images/11-3.png)
 
-[](Images/11-4.png)
+![Photo](Images/11-4.png)
 
 ## Task 12: Create Transit Gateway
 
@@ -264,9 +264,9 @@
 
 3. Create transit gateway
 
-[](Images/12-1.png)
+![Photo](Images/12-1.png)
 
-[](Images/12-2.png)
+![Photo](Images/12-2.png)
 
 ## Task 13: Create the Transit Gateway Attachments
 
@@ -292,11 +292,11 @@
 
 4. Create transit gateway attachment
 
-[](Images/13-1.png)
+![Photo](Images/13-1.png)
 
-[](Images/13-2.png)
+![Photo](Images/13-2.png)
 
-[](Images/13-3.png)
+![Photo](Images/13-3.png)
 
 ## Task 14: Route in First VPC Route Table
 
@@ -309,11 +309,11 @@
 
 3. Save changes and confirm the 20.0.0.0/24 route is Active
 
-[](Images/14-1.png)
+![Photo](Images/14-1.png)
 
-[](Images/14-2.png)
+![Photo](Images/14-2.png)
 
-[](Images/14-3.png)
+![Photo](Images/14-3.png)
 
 ## Task 15: Route in Second VPC Route Table
 
@@ -326,11 +326,11 @@
 
 3. Save changes and confirm the route is Active
 
-[](Images/15-1.png)
+![Photo](Images/15-1.png)
 
-[](Images/15-2.png)
+![Photo](Images/15-2.png)
 
-[](Images/15-3.png)
+![Photo](Images/15-3.png)
 
 ## Task 16: Test Connectivity Between VPCs
 
@@ -371,21 +371,21 @@
     [ec2-user@ip-20-0-0-xx ~]$
     ```
 
-[](Images/16-1.png)
+![Photo](Images/16-1.png)
 
-[](Images/16-2.png)
+![Photo](Images/16-2.png)
 
-[](Images/16-3.png)
+![Photo](Images/16-3.png)
 
-[](Images/16-4.png)
+![Photo](Images/16-4.png)
 
-[](Images/16-5.png)
+![Photo](Images/16-5.png)
 
-[](Images/16-6.png)
+![Photo](Images/16-6.png)
 
-[](Images/16-7.png)
+![Photo](Images/16-7.png)
 
-[](Images/16-8.png)
+![Photo](Images/16-8.png)
 
 ## Task 17: Tear Down
 
