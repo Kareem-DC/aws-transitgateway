@@ -34,15 +34,12 @@
     - IPv4 CIDR block: 10.0.0.0/25
 
 2. Create subnet
-
-3. Select public_subnet_first_vpc > Actions > Edit subnet settings
-
-4. Check Enable auto-assign public IPv4 address > Save
-
 ![Photo](Images/2-1.png)
 
+3. Select public_subnet_first_vpc > Actions > Edit subnet settings
 ![Photo](Images/2-2.png)
 
+Check Enable auto-assign public IPv4 address > Save
 ![Photo](Images/2-3.png)
 
 ## Task 3: Create and Attach Internet Gateway (IGW)
@@ -50,17 +47,14 @@
 1. Internet gateways > Create internet gateway
 
     - Name tag: igw_1
+![Photo](Images/3-1.png)
 
 2. Create internet gateway
 
 3. Select igw_1 > Actions > Attach to VPC
-
-4. Choose first_vpc > Attach internet gateway
-
-![Photo](Images/3-1.png)
-
 ![Photo](Images/3-2.png)
 
+4. Choose first_vpc > Attach internet gateway
 ![Photo](Images/3-3.png)
 
 ## Task 4: Create a Public Route Table and Associate the Subnet
@@ -69,19 +63,15 @@
 
     - Name: PublicRT
     - VPC: first_vpc
-
-2. Create route table
-
-3. Open the Subnet associations tab > Edit subnet associations
-
-4. Select public_subnet_first_vpc > Save associations
-
 ![Photo](Images/4-1.png)
 
+2. Create route table
 ![Photo](Images/4-2.png)
 
+3. Open the Subnet associations tab > Edit subnet associations
 ![Photo](Images/4-3.png)
 
+4. Select public_subnet_first_vpc > Save associations
 ![Photo](Images/4-4.png)
 
 ## Task 5: Add the Public Route
@@ -90,6 +80,9 @@
 
     - Destination: 0.0.0.0/0
     - Target: Internet Gateway > igw_1
+![Photo](Images/6-1.png)
+
+![Photo](Images/6-2.png)
 
 2. Save changes
 
@@ -110,10 +103,6 @@
 
 4. Create security group
 
-![Photo](Images/6-1.png)
-
-![Photo](Images/6-2.png)
-
 ![Photo](Images/6-3.png)
 
 ## Task 7: Launch EC2 in First VPC (Public)
@@ -125,11 +114,13 @@
 3. AMI: Amazon Linux 2023 kernel-6.8
 
     - Instance type: t2.micro
+![Photo](Images/7-1.png)
 
 4. Configure the key pair
 
     - Create a new key pair, or select an existing one.
     - For a new key pair, choose a name such as in_the_air.pem.
+![Photo](Images/7-2.png)
 
 5. Under Network settings, choose Edit
 
@@ -137,6 +128,7 @@
     - Subnet: public_subnet_first_vpc
     - Auto-assign public IP: Enable
     - Security group: Choose existing > sg_01
+![Photo](Images/7-3.png)
 
 6. Under Advanced details, scroll to User data and paste:
 
@@ -148,19 +140,13 @@
     sudo systemctl enable httpd
     echo "<html><h1>Welcome to Whizlabs Public Server</h1></html>" > /var/www/html/index.html
     ```
+![Photo](Images/7-4.png)
 
 7. Launch the instance and wait until its status is Running
 
-![Photo](Images/7-1.png)
-
-![Photo](Images/7-2.png)
-
-![Photo](Images/7-3.png)
-
-![Photo](Images/7-4.png)
-
 ![Photo](Images/7-5.png)
 
+8. 
 ![Photo](Images/7-6.png)
 
 ## Task 8: Create the Second VPC
@@ -170,19 +156,15 @@
     - Resource to create: VPC only
     - Name tag: second_vpc
     - IPv4 CIDR block: 20.0.0.0/24
-
-2. Create VPC
-
-3. Select second_vpc > Actions > Edit VPC settings
-
-4. Check Enable DNS resolution and Enable DNS hostnames > Save
-
 ![Photo](Images/8-1.png)
 
+2. Create VPC
 ![Photo](Images/8-2.png)
 
+3. Select second_vpc > Actions > Edit VPC settings
 ![Photo](Images/8-3.png)
 
+4. Check Enable DNS resolution and Enable DNS hostnames > Save
 ![Photo](Images/8-4.png)
 
 ## Task 9: Create a Private Subnet in Second VPC
@@ -193,13 +175,11 @@
     - Subnet name: private_subnet_second_vpc
     - Availability Zone: No preference
     - IPv4 CIDR block: 20.0.0.0/25
+![Photo](Images/9-1.png)
 
 2. Create subnet
 
     - No custom route table or internet gateway is required. The subnet uses the second VPC's main route table and has no internet route.
-
-![Photo](Images/9-1.png)
-
 ![Photo](Images/9-2.png)
 
 ## Task 10: Create Security Group
@@ -229,8 +209,10 @@
 3. AMI: Amazon Linux 2023 kernel-6.8
 
     - Instance type: t2.micro
+![Photo](Images/11-1.png)
 
 4. Select the key pair used for the first instance
+![Photo](Images/11-2.png)
 
 5. Under Network settings, choose Edit
 
@@ -238,15 +220,9 @@
     - Subnet: private_subnet_second_vpc
     - Auto-assign public IP: Disable
     - Security group: Choose existing > sg_02
-
-6. Leave the remaining settings at their defaults > Launch instance
-
-![Photo](Images/11-1.png)
-
-![Photo](Images/11-2.png)
-
 ![Photo](Images/11-3.png)
 
+6. Leave the remaining settings at their defaults > Launch instance
 ![Photo](Images/11-4.png)
 
 ## Task 12: Create Transit Gateway
@@ -255,12 +231,11 @@
 
     - Name tag: TGW1
     - Description: TGW for peering two VPCs
+![Photo](Images/12-1.png)
 
 2. Leave all other options at their defaults
 
 3. Create transit gateway
-
-![Photo](Images/12-1.png)
 
 ![Photo](Images/12-2.png)
 
@@ -275,6 +250,7 @@
     - IPv6 support: Disable
     - VPC ID: first_vpc
     - Subnet: public_subnet_first_vpc
+![Photo](Images/13-1.png)
 
 2. Create transit gateway attachment
 
@@ -285,47 +261,37 @@
     - Attachment type: VPC
     - VPC ID: second_vpc
     - Subnet: private_subnet_second_vpc
-
-4. Create transit gateway attachment
-
-![Photo](Images/13-1.png)
-
 ![Photo](Images/13-2.png)
 
+4. Create transit gateway attachment
 ![Photo](Images/13-3.png)
 
 ## Task 14: Route in First VPC Route Table
 
 1. Route tables > Filter by VPC: first_vpc > Select PublicRT
+![Photo](Images/14-1.png)
 
 2. Routes tab > Edit routes > Add route
 
     - Destination: 20.0.0.0/24
     - Target: Transit Gateway > TGW1
-
-3. Save changes and confirm the 20.0.0.0/24 route is Active
-
-![Photo](Images/14-1.png)
-
 ![Photo](Images/14-2.png)
 
+3. Save changes and confirm the 20.0.0.0/24 route is Active
 ![Photo](Images/14-3.png)
 
 ## Task 15: Route in Second VPC Route Table
 
 1. Route tables > Filter by VPC: second_vpc > Select that VPC's main route table
+![Photo](Images/15-1.png)
 
 2. Routes tab > Edit routes > Add route
 
     - Destination: 10.0.0.0/24
     - Target: Transit Gateway > TGW1
-
-3. Save changes and confirm the route is Active
-
-![Photo](Images/15-1.png)
-
 ![Photo](Images/15-2.png)
 
+3. Save changes and confirm the route is Active
 ![Photo](Images/15-3.png)
 
 ## Task 16: Test Connectivity Between VPCs
@@ -366,22 +332,6 @@
     ```text
     [ec2-user@ip-20-0-0-xx ~]$
     ```
-
-![Photo](Images/16-1.png)
-
-![Photo](Images/16-2.png)
-
-![Photo](Images/16-3.png)
-
-![Photo](Images/16-4.png)
-
-![Photo](Images/16-5.png)
-
-![Photo](Images/16-6.png)
-
-![Photo](Images/16-7.png)
-
-![Photo](Images/16-8.png)
 
 ## Task 17: Tear Down
 
