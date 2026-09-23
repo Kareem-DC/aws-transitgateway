@@ -13,19 +13,15 @@
     - IPv4 CIDR block: 10.0.0.0/24
 
 4. Leave the rest default > Create VPC. Note the VPC ID
-
-5. Select your VPC > Actions > Edit VPC settings
-
-6. Check Enable DNS resolution and Enable DNS hostnames > Save
-
-    - This matters because DNS hostnames are off by default on non-default VPCs. Without them, the instance won’t get a usable DNS hostname, which some connectivity tooling (including Session Manager) expects.
-
 ![Photo](Images/1-1.png)
 
+5. Select your VPC > Actions > Edit VPC settings
 ![Photo](Images/1-2.png)
 
+6. Check Enable DNS resolution and Enable DNS hostnames > Save
 ![Photo](Images/1-3.png)
 
+    - This matters because DNS hostnames are off by default on non-default VPCs. Without them, the instance won’t get a usable DNS hostname, which some connectivity tooling (including Session Manager) expects.
 ![Photo](Images/1-4.png)
 
 ## Task 2: Create a Public Subnet in First VPC
