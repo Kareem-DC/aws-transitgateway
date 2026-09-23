@@ -20,21 +20,13 @@
 
     - This matters because DNS hostnames are off by default on non-default VPCs. Without them, the instance won’t get a usable DNS hostname, which some connectivity tooling (including Session Manager) expects.
 
-``
 ![Photo](Images/1-1.png)
-``
 
-``
 ![Photo](Images/1-2.png)
-``
 
-``
 ![Photo](Images/1-3.png)
-``
 
-``
 ![Photo](Images/1-4.png)
-``
 
 ## Task 2: Create a Public Subnet in First VPC
 
